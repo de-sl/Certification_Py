@@ -19,7 +19,7 @@
 * Любое действие выводит сумму денег
 """
 
-
+from datetime import datetime
 import logging
 
 logging.basicConfig(filename='ATM.log', level=logging.INFO, encoding='UTF-8')
@@ -60,8 +60,8 @@ def add_money(balance:int) -> int:
         logger.info('Баланс пополнен успешно')
         balance += value                            # Пополняем баланс
         success = True
-        logger.info(f'Внесено на счет: {value}')
-        logger.info(f'Баланс счета: {balance}')        
+        logger.info(f'{datetime.now().strftime("%H:%M:%S")} Внесено на счет: {value}')
+        logger.info(f'{datetime.now().strftime("%H:%M:%S")} Баланс счета: {balance}')        
     else:
         logger.info('Некорректная сумма ввода ')
         print('Введите сумму, кратную 50.')         # В проивном случае просим ввести сумму
@@ -103,9 +103,9 @@ def get_money(balance:int) -> int:
             balance = balance - value - comiss      # Вычитаем из баланса сумму снятия и комисии
             logger.info('Успешнное снятие средств')
             success = True
-            logger.info(f'Снято со счета: {value}')
-            logger.info(f'Комиссия: {comiss}')
-            logger.info(f'Баланс счета: {balance}')
+            logger.info(f'{datetime.now().strftime("%H:%M:%S")} Снято со счета: {value}')
+            logger.info(f'{datetime.now().strftime("%H:%M:%S")} Комиссия: {comiss}')
+            logger.info(f'{datetime.now().strftime("%H:%M:%S")} Баланс счета: {balance}')
         else:
             logger.info('Недостаточно средств')
             print('У Вас недостаточно средств на счете.')      # Если сумма на счете недостаточная
@@ -123,12 +123,12 @@ while True:
     sel = int(input('Выбирете операцию: '))
     if sel == 1:                               # Выбор операции пополнить баланс
         logger.info('Выбрана опреция пополнить счет')
-        logger.info('Пополнение счета')
+        logger.info(f'{datetime.now().strftime("%H:%M:%S")} Пополнение счета')
         balance, success = add_money(balance)   # Функция пополнения баланса
 
     elif sel == 2:                              # Выбор операции снятие средств
         logger.info('Выбрана опреция снятие средств')
-        logger.info('Снятие средств со счета')
+        logger.info(f'{datetime.now().strftime("%H:%M:%S")} Снятие средств со счета')
         balance, success = get_money(balance)   # Функция снятия средств
 
     elif sel == 3:                              # Выбор функции выход
