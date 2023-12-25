@@ -50,7 +50,7 @@ def add_money(balance:int) -> int:
     balance = get_reach_taks(balance) # Проверка на списание налога на богатство
     success = False
 
-    logger.info('Ввод суммы пополнения')
+    logger.info('Ввод суммы пополнения: ')
 
     value = int(input('Введите сумму пополнения: '))  # Ввод суммы пополнения баланса
 
@@ -59,11 +59,14 @@ def add_money(balance:int) -> int:
     if value % 50 == 0:                 # Если сумма кранта 50 ти
         logger.info('Баланс пополнен успешно')
         balance += value                            # Пополняем баланс
-        success = True        
+        success = True
+        logger.info(f'Внесено на счет: {value}')
+        logger.info(f'Баланс счета: {balance}')        
     else:
         logger.info('Некорректная сумма ввода ')
         print('Введите сумму, кратную 50.')         # В проивном случае просим ввести сумму
     return balance, success                         # Кратную 50 ти
+    
 
 
 
@@ -93,13 +96,16 @@ def get_money(balance:int) -> int:
     logger.info('Ввод суммы снятия')
     value = int(input('Введите сумму для снятия: '))  # Ввод суммы снятия средств
     logger.info('Проверка кратности 50 ти')
-    if value % 50 == 0:                              # Проверка на кратность 50 ти
+    if value % 50 == 0:                             # Проверка на кратность 50 ти
         comiss = calc_comiss(value)                  # Рассчет комиссии за снятие 
         if balance >= (comiss + value):
             logger.info('Расчет суммы снятия средств c учетом комисии') 
             balance = balance - value - comiss      # Вычитаем из баланса сумму снятия и комисии
             logger.info('Успешнное снятие средств')
             success = True
+            logger.info(f'Снято со счета: {value}')
+            logger.info(f'Комиссия: {comiss}')
+            logger.info(f'Баланс счета: {balance}')
         else:
             logger.info('Недостаточно средств')
             print('У Вас недостаточно средств на счете.')      # Если сумма на счете недостаточная
