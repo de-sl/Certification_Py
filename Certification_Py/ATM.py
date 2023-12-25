@@ -93,7 +93,7 @@ def get_money(balance:int) -> int:
     logger.info('Ввод суммы снятия')
     value = int(input('Введите сумму для снятия: '))  # Ввод суммы снятия средств
     logger.info('Проверка кратности 50 ти')
-    if value % 50 == 0:                             # Проверка на кратность 50 ти
+    if value % 50 == 0:                              # Проверка на кратность 50 ти
         comiss = calc_comiss(value)                  # Рассчет комиссии за снятие 
         if balance >= (comiss + value):
             logger.info('Расчет суммы снятия средств c учетом комисии') 
