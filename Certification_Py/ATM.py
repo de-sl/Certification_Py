@@ -22,7 +22,7 @@
 
 import logging
 
-logging.basicConfig(filename='bankomat.log', level=logging.INFO, encoding='UTF-8')
+logging.basicConfig(filename='ATM.log', level=logging.INFO, encoding='UTF-8')
 logger = logging.getLogger()
 
 
